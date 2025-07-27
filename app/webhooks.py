@@ -15,6 +15,7 @@ async def process_webhook(data: dict):
     task_data = data.get('task')
     is_valid = is_task_valid(task_data)
     if not is_valid:
+        print("Задача не подходит")
         return
 
     print(task_data)
