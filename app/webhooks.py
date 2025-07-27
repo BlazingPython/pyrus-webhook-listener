@@ -12,8 +12,8 @@ def is_task_valid(task_info: dict) -> bool:
 
 async def process_webhook(data: dict):
     """Асинхронная обработка вебхука в фоне"""
-    task_data = data.get('task')
     logger.info(f"task_data: {task_data}")
+    task_data = data.get('task')
     is_valid = is_task_valid(task_data)
     if not is_valid:
         logger.info(f"Задача с id {task_data.get("id")} не подходит")
