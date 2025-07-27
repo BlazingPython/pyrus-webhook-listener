@@ -17,7 +17,7 @@ async def process_webhook(data: dict):
     if not is_valid:
         return
 
-    # Здесь будет основная логика обработки
+    print(task_data)
 
 
 @router.post("/pyrus-webhook")
