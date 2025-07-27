@@ -6,12 +6,17 @@ router = APIRouter()
 logger = logging.getLogger("pyrus_webhook")
 
 
+def is_task_valid(task_info: dict) -> bool:
+    """Возвращает True, если комментарии отсутствуют, иначе False"""
+    return True if not task_info.get("comments") else False
+
 async def process_webhook(data: dict):
     """Асинхронная обработка вебхука в фоне"""
-    logger.info(f"Received Pyrus event: {data['event']}")
-    logger.info(f"Task ID: {data['task_id']}")
-    logger.info(f"User ID: {data['user_id']}")
-    logger.info(f"Task details: {data.get('task')}")
+    task_data = data.get('task')
+    is_valid = is_task_valid(task_data)
+    if not is_valid:
+        return
+
     # Здесь будет основная логика обработки
 
 
